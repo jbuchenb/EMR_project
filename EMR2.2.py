@@ -157,7 +157,7 @@ email.grid(column = 0, row = 0, padx = 10)
 email_input = Entry(demographic.email_container, width = 40, textvariable= Email)
 email_input.grid(column = 1, row = 0)
 
-
+# this is a comment
 
 save = Button(demographic.main_container, width=5, text="Save", command=lambda: retrieve_input())
 save.pack(side="bottom")
