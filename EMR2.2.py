@@ -16,27 +16,25 @@ Email = 0
 
 #Don't think we will need this anymore, but TBD
 def retrieve_input(*args):
-    '''provides variable place for entry values to be placed in'''
-    First = [firstname_input.get()]
-    Last = [lastname_input.get()]
-    DOBmonth =[DOBmonth_input.get()]
-    DOBday = [DOBday_input.get()]
-    DOByear = [DOByear_input.get()]
+    First = firstname_input.get()
+    Last = lastname_input.get()
+    DOBmonth = DOBmonth_input.get()
+    DOBday = DOBday_input.get()
+    DOByear = DOByear_input.get()
     SSN1 = SSN1_input.get()
     SSN2 = SSN2_input.get()
     SSN3 = SSN3_input.get()
-    print("Patient Values:", First, Last, DOBmonth, DOBday, DOByear, SSN1, SSN2, SSN3)
+    print("in function:", First, Last, DOBmonth, DOBday, DOByear, SSN1, SSN2, SSN3)
     
 
 
 def limitSize(*args):
-    '''Limites size of each individual text box to our specified length'''
     first = First.get()
-    if len(first) > 20: DOBmonth.set(first[:20])
+    if len(first) > 20: First.set(first[:20])
     middle = Middle_I.get()
-    if len(middle) > 1: DOBmonth.set(middle[:1])
+    if len(middle) > 1: Middle_I.set(middle[:1])
     last = Last.get()
-    if len(last) > 30: DOBmonth.set(last[:30])
+    if len(last) > 30: Last.set(last[:30])
     DOB_m = DOBmonth.get()
     if len(DOB_m) > 2: DOBmonth.set(DOB_m[:2])
     DOB_d = DOBday.get()
@@ -51,10 +49,7 @@ def limitSize(*args):
     if len(SSN_3) > 4: SSN3.set(SSN_3[:4])
     
 
-'''
-Main container = demographic 
-Subcontainers are defined below (demographic.XXX)
-'''
+
 demographic = Tk()
 demographic.title("Demographic Information")
 demographic.geometry("600x400+100+100")
@@ -81,13 +76,18 @@ demographic.email_container =Frame(demographic.main_container)
 demographic.email_container.pack()
 
 
+First = StringVar()
+First.trace('w', limitSize)
+Middle_I = StringVar()
+Middle_I.trace('w', limitSize)
+Last = StringVar()
+Last.trace('w', limitSize)
 DOBmonth = StringVar()
 DOBmonth.trace('w', limitSize)
 DOBday = StringVar()
 DOBday.trace('w', limitSize)
 DOByear = StringVar()
 DOByear.trace('w', limitSize)
-
 SSN1 = StringVar()
 SSN1.trace('w', limitSize)
 SSN2 = StringVar()
@@ -157,7 +157,7 @@ email.grid(column = 0, row = 0, padx = 10)
 email_input = Entry(demographic.email_container, width = 40, textvariable= Email)
 email_input.grid(column = 1, row = 0)
 
-# this is a comment
+
 
 save = Button(demographic.main_container, width=5, text="Save", command=lambda: retrieve_input())
 save.pack(side="bottom")
