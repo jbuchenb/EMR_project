@@ -24,10 +24,10 @@ def retrieve_input(*args):
     SSN1 = SSN1_input.get()
     SSN2 = SSN2_input.get()
     SSN3 = SSN3_input.get()
-    print("in function:", First, Last, DOBmonth, DOBday, DOByear, SSN1, SSN2, SSN3)
+    print("Patient Demographic File:", First, Last, DOBmonth, DOBday, DOByear, SSN1, 
+          SSN2, SSN3, Address, Address2, zip_code email_input)
     
-
-
+########################   Limiting input of text boxes   ###############################
 def limitSize(*args):
     first = First.get()
     if len(first) > 20: First.set(first[:20])
@@ -48,8 +48,8 @@ def limitSize(*args):
     SSN_3 = SSN3.get()
     if len(SSN_3) > 4: SSN3.set(SSN_3[:4])
     
-
-
+###################   Container list.  ###################################
+    
 demographic = Tk()
 demographic.title("Demographic Information")
 demographic.geometry("600x400+100+100")
@@ -75,7 +75,7 @@ demographic.zip_container.pack()
 demographic.email_container =Frame(demographic.main_container)
 demographic.email_container.pack()
 
-
+#####################   Using size limiting function on text boxes   ################# 
 First = StringVar()
 First.trace('w', limitSize)
 Middle_I = StringVar()
@@ -95,6 +95,8 @@ SSN2.trace('w', limitSize)
 SSN3 = StringVar()
 SSN3.trace('w', limitSize)
 
+
+############################   Name Container   ###########################
 #First name label and text entry box
 firstname = Label(demographic.name_container, text = "First Name: ")
 firstname.grid(column = 0, row = 0, padx=10)
@@ -113,6 +115,8 @@ lastname.grid(column = 4, row = 0, padx = 10)
 lastname_input = Entry(demographic.name_container, width = 30, textvariable= Last)
 lastname_input.grid(column = 5, row = 0)
 
+
+##########################   DOB Container   ##################################
 #DOB label and text entry boxes
 DOB = Label(demographic.DOB_container, text = "Birthdate: ").pack(side = LEFT)
 DOBmonth_input = Entry(demographic.DOB_container, width=2, textvariable= DOBmonth)
@@ -122,6 +126,7 @@ DOBday_input.pack(side = LEFT)
 DOByear_input = Entry(demographic.DOB_container, width = 4, textvariable= DOByear)
 DOByear_input.pack(side = LEFT)
 
+##########################   SSN Container   #####################################
 #SSN label and text entry boxes
 SSN = Label(demographic.SSN_container, text = "Social Security Number: ").pack(side = LEFT)
 SSN1_input = Entry(demographic.SSN_container, width=3, textvariable= SSN1)
@@ -132,16 +137,19 @@ SSN2_input.pack(side="left")
 SSN3_input = Entry(demographic.SSN_container, width=4, textvariable= SSN3)
 SSN3_input.pack(side="left")
 
+
+###########################   Address Container   #################################
 #Address label and text entry boxes
 address = Label(demographic.address_container, text = "Address")
 address.grid(column = 0, row = 0, padx = 10) 
 
 street_address1 = Entry(demographic.address_container, width= 40, textvariable= Address)
 street_address1.grid(column = 1, row = 0)
-
 street_address2 = Entry(demographic.address_container, width=40, textvariable= Address2)
 street_address2.grid(column = 1, row = 1)
 
+
+##########################   ZIP container   ######################################
 ZIP = Label(demographic.zip_container, text = "ZIP Code: ")
 ZIP.grid(column = 0, row = 2, padx = 10)
 
@@ -150,7 +158,7 @@ zip_code.grid(column = 1, row = 2)
 
 #state = Entry(demographic.address_container, width = 10, textvariable= "State")
 
-
+##########################   Email container   ######################################
 email = Label(demographic.email_container, text = "Email: ")
 email.grid(column = 0, row = 0, padx = 10)
 
