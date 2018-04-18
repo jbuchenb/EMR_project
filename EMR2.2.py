@@ -1,5 +1,22 @@
 from tkinter import *
 
+#Creating Profile menu
+main_window = Tk()
+main_window.title("Main")
+menu = Menu(main_window)
+new_item = Menu(menu)
+new_item.add_command(label='Patient Search')
+new_item.add_separator()
+new_item.add_command(label='Edit Profile')
+new_item.add_separator()
+new_item.add_command(label='Create New Profile')
+menu.add_cascade(label='Profile', menu=new_item)
+main_window.config(menu=menu)
+main_window.mainloop()
+
+###########################################################################
+###  Defining variables prior to using them in retrieve input function ###
+
 First = 0
 Middle_I = 0
 Last = 0
@@ -16,9 +33,22 @@ ZIP = 0
 Email = 0
 Female = 'Female'
 Male = 'Male'
+State = 0
+City = 0
+
+#############################################################################
+#############################################################################
 
 
 
+
+
+
+
+
+
+################################################################################
+#######   Function that creates a List with all patient information ############
 def retrieve_input(*args):
     First = firstname_input.get()
     Middle_I = middle_I_input.get()
@@ -34,15 +64,18 @@ def retrieve_input(*args):
     Address2 = street_address2.get()
     ZIP = zip_code_input.get()
     Email = email_input.get()
-    
+
     SSN = SSN1+SSN2+SSN3
     Address = Address1+Address2
-    patient_info = [First, Middle_I, Last, Sex, DOBmonth, DOBday, DOByear, SSN, Address, ZIP, Email]
+    #State = State_input.get()
+    #City = City_input.get()
+    
+    patient_info = [First, Middle_I, Last, Sex, DOBmonth, DOBday, DOByear, SSN, Address, City, State, ZIP, Email]
     print(patient_info)
     return patient_info
     
 
-
+########################   Limiting input of text boxes   ###############################
 def limitSize(*args):
     first = First.get()
     if len(first) > 20: First.set(first[:20])
@@ -66,28 +99,23 @@ def limitSize(*args):
     if len(address1) > 40: Address1.set(address1[:40])
     address2 = Address2.get()
     if len(address2) > 30: Address2.set(address2[:30])
+    
+    City = City.get()
+    if len(City) > 20: City.set(City[:20])
+    
+    # State and Gender are not needed because they are not textboxes? ##
+    
     zip_ = ZIP.get()
     if len(zip_) > 5: ZIP.set(zip_[:5])
+    
     emails = Email.get()
     if len(emails) > 40: Email.set(emails[:40])
     
     
-#Creating Profile menu
-main_window = Tk()
-main_window.title("Main")
-menu = Menu(main_window)
-new_item = Menu(menu)
-new_item.add_command(label='Patient Search')
-new_item.add_separator()
-new_item.add_command(label='Edit Profile')
-new_item.add_separator()
-new_item.add_command(label='Create New Profile')
-menu.add_cascade(label='Profile', menu=new_item)
-main_window.config(menu=menu)
-main_window.mainloop()
 
 
-#Demographic Info Window    
+###############    Demographic Info Window    #################################
+### All container windows within the demographic window are listed here #####
 demographic = Tk()
 demographic.title("Demographic Information")
 demographic.geometry("600x400+100+100")
@@ -116,36 +144,13 @@ demographic.zip_container.pack()
 demographic.email_container =Frame(demographic.main_container)
 demographic.email_container.pack()
 
-
-First = StringVar()
-First.trace('w', limitSize)
-Middle_I = StringVar()
-Middle_I.trace('w', limitSize)
-Last = StringVar()
-Last.trace('w', limitSize)
-sex_choice = StringVar()
-DOBmonth = StringVar()
-DOBmonth.trace('w', limitSize)
-DOBday = StringVar()
-DOBday.trace('w', limitSize)
-DOByear = StringVar()
-DOByear.trace('w', limitSize)
-SSN1 = StringVar()
-SSN1.trace('w', limitSize)
-SSN2 = StringVar()
-SSN2.trace('w', limitSize)
-SSN3 = StringVar()
-SSN3.trace('w', limitSize)
-Address1 = StringVar()
-Address1.trace('w', limitSize)
-Address2 = StringVar()
-Address2.trace('w', limitSize)
-ZIP = StringVar()
-ZIP.trace('w', limitSize)
-Email = StringVar()
-Email.trace('w', limitSize)
+demographic.state_container = Frame(demographic.main_container)
+demographic.state_container.pack()
 
 
+############################################################################
+######    All Entry boxes within their respective container           ######
+############################################################################
 #First name label and text entry box
 firstname = Label(demographic.name_container, text = "First Name: ")
 firstname.grid(column = 0, row = 0, padx=10)
@@ -207,8 +212,6 @@ zip_code.grid(column = 0, row = 2, padx = 10)
 zip_code_input = Entry(demographic.zip_container, width = 10, textvariable= ZIP)
 zip_code_input.grid(column = 1, row = 2)
 
-#state = Entry(demographic.address_container, width = 10, textvariable= "State")
-
 
 email = Label(demographic.email_container, text = "Email: ")
 email.grid(column = 0, row = 0, padx = 10)
@@ -216,6 +219,51 @@ email.grid(column = 0, row = 0, padx = 10)
 email_input = Entry(demographic.email_container, width = 40, textvariable= Email)
 email_input.grid(column = 1, row = 0)
 
+############################################################################
+#################### Applying Limitsize function to inputs      ############
+First = StringVar()
+First.trace('w', limitSize)
+
+Middle_I = StringVar()
+Middle_I.trace('w', limitSize)
+
+Last = StringVar()
+Last.trace('w', limitSize)
+
+sex_choice = StringVar()
+
+DOBmonth = StringVar()
+DOBmonth.trace('w', limitSize)
+
+DOBday = StringVar()
+DOBday.trace('w', limitSize)
+
+DOByear = StringVar()
+DOByear.trace('w', limitSize)
+
+SSN1 = StringVar()
+SSN1.trace('w', limitSize)
+
+SSN2 = StringVar()
+SSN2.trace('w', limitSize)
+
+SSN3 = StringVar()
+SSN3.trace('w', limitSize)
+
+Address1 = StringVar()
+Address1.trace('w', limitSize)
+
+Address2 = StringVar()
+Address2.trace('w', limitSize)
+
+ZIP = StringVar()
+ZIP.trace('w', limitSize)
+
+Email = StringVar()
+Email.trace('w', limitSize)
+
+City = Stringvar()
+City.tract('w', limitSize)
 
 
 save = Button(demographic.main_container, width=5, text="Save", command=lambda: retrieve_input())
