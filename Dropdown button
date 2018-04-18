@@ -1,41 +1,45 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Apr 10 18:19:51 2018
+Created on Wed Apr 18 13:03:53 2018
 
 @author: dan
 """
+
 from tkinter import *
+import tkinter as ttk
+
  
-root = Tk()
-root.title("Tk dropdown example")
+demographic.state = Tk()
+demographic.state.title("Tk dropdown example")
  
-# Add a grid'
-mainframe = Frame(root)
+# Add a grid
+mainframe = Frame(demographic.state)
 mainframe.grid(column=0,row=0, sticky=(N,W,E,S) )
 mainframe.columnconfigure(0, weight = 1)
 mainframe.rowconfigure(0, weight = 1)
 mainframe.pack(pady = 100, padx = 100)
  
 # Create a Tkinter variable
-state = StringVar(root) 
-# Dictionary with options
+state_select = StringVar(demographic.state)
+ 
+# List with options
 choices = [ 
         'AL','AK','AS','AZ','AR','CA','CO','CT','DC','DE','FL','FM','GA','GU','HI','ID','IL','IN',
        'IA','KS','KY','LA','ME','MD','MA','MH','MI','MN','MO','MP','MS','MT','NE','NV',
        'NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','PR','PW','RI','SC','SD','TN',
        'TX','UT','VI','VT','VA','WA','WV','WI','WY'
           ]
-state.set('NC') # set the default option
+state_select.set('NC') # set the default option
  
-popupMenu = OptionMenu(demographic.zip_container, state, *choices)
-Label(demographic.zip_container, text="State").grid(row = 1, column = 1)
+popupMenu = OptionMenu(mainframe, state_select, *choices)
+Label(mainframe, text="State").grid(row = 1, column = 1)
 popupMenu.grid(row = 2, column =1)
  
 # on change dropdown value
 def change_dropdown(*args):
-    print( state.get() )
+    print( state_select.get() )
  
 # link function to change dropdown
-state.trace('w', change_dropdown)
+state_select.trace('w', change_dropdown)
  
-root.mainloop()
+demographic.state.mainloop()
