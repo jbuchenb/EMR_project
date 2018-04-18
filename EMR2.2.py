@@ -70,155 +70,155 @@ def limitSize(*args):
     if len(zip_) > 5: ZIP.set(zip_[:5])
     emails = Email.get()
     if len(emails) > 40: Email.set(emails[:40])
-
-
-#Function to run Demographic Input Window
-def demographic_entry():   
-    demographic = Tk()
-    demographic.title("Demographic Information")
-    demographic.geometry("730x300+100+100")
-
-    demographic.main_container = Frame(demographic)
-    demographic.main_container.grid(column = 0, columnspan = 2, row = 0, rowspan = 2)
-
-    demographic.name_container = Frame(demographic.main_container)
-    demographic.name_container.pack(side = 'top')
-
-    demographic.sex_container = Frame(demographic.main_container)
-    demographic.sex_container.pack()
-
-    demographic.DOB_container = Frame(demographic.main_container)
-    demographic.DOB_container.pack()
-
-    demographic.SSN_container = Frame(demographic.main_container)
-    demographic.SSN_container.pack()
-
-    demographic.address_container = Frame(demographic.main_container)
-    demographic.address_container.pack()
     
-    demographic.zip_container = Frame(demographic.main_container)
-    demographic.zip_container.pack()
-
-    demographic.email_container =Frame(demographic.main_container)
-    demographic.email_container.pack()
-
-
-    First = StringVar()
-    First.trace('w', limitSize)
-    Middle_I = StringVar()
-    Middle_I.trace('w', limitSize)
-    Last = StringVar()
-    Last.trace('w', limitSize)
-    sex_choice = StringVar()
-    DOBmonth = StringVar()
-    DOBmonth.trace('w', limitSize)
-    DOBday = StringVar()
-    DOBday.trace('w', limitSize)
-    DOByear = StringVar()
-    DOByear.trace('w', limitSize)
-    SSN1 = StringVar()
-    SSN1.trace('w', limitSize)
-    SSN2 = StringVar()
-    SSN2.trace('w', limitSize)
-    SSN3 = StringVar()
-    SSN3.trace('w', limitSize)
-    Address1 = StringVar()
-    Address1.trace('w', limitSize)
-    Address2 = StringVar()
-    Address2.trace('w', limitSize)
-    ZIP = StringVar()
-    ZIP.trace('w', limitSize)
-    Email = StringVar()
-    Email.trace('w', limitSize)
     
-
-    #First name label and text entry box
-    firstname = Label(demographic.name_container, text = "First Name: ")
-    firstname.grid(column = 0, row = 0, padx=10)
-    firstname_input = Entry(demographic.name_container, width = 20, textvariable= First)
-    firstname_input.grid(column = 1, row = 0)
-    
-    # Middle Initial Label and text entry box
-    middle_I = Label(demographic.name_container, text = "\tMiddle Inital: ")
-    middle_I.grid(column = 2, row = 0, padx=10)
-    middle_I_input = Entry(demographic.name_container, width = 5, textvariable = Middle_I)
-    middle_I_input.grid(column = 3, row = 0)
-    
-    #Last name label and text entry box
-    lastname = Label(demographic.name_container, text = "\tLast Name: ")
-    lastname.grid(column = 4, row = 0, padx = 10)
-    lastname_input = Entry(demographic.name_container, width = 30, textvariable= Last)
-    lastname_input.grid(column = 5, row = 0)
-
-    #DOB label and text entry boxes
-    DOB = Label(demographic.DOB_container, text = "Birthdate: ").pack(side = LEFT)
-    DOBmonth_input = Entry(demographic.DOB_container, width=2, textvariable= DOBmonth)
-    DOBmonth_input.pack(side = LEFT)
-    DOBday_input = Entry(demographic.DOB_container, width = 2, textvariable= DOBday)
-    DOBday_input.pack(side = LEFT)
-    DOByear_input = Entry(demographic.DOB_container, width = 4, textvariable= DOByear)
-    DOByear_input.pack(side = LEFT)
-
-    #Sex label and Radiobutton entry boxes
-    sex_label = Label(demographic.sex_container, text = "Sex: ").pack(side = LEFT)
-    sex_input1 = Radiobutton(demographic.sex_container,text='Female', width = 5, value= Female, variable = sex_choice)
-    sex_input1.pack(side = LEFT)
-    sex_input2 = Radiobutton(demographic.sex_container,text='Male', width = 5, value= Male, variable = sex_choice)
-    sex_input2.pack(side = LEFT)
-
-
-    #SSN label and text entry boxes
-    SSN = Label(demographic.SSN_container, text = "Social Security Number: ").pack(side = LEFT)
-    SSN1_input = Entry(demographic.SSN_container, width=3, textvariable= SSN1)
-    SSN1_input.pack(side="left")
-    
-    SSN2_input = Entry(demographic.SSN_container, width=2, textvariable= SSN2)
-    SSN2_input.pack(side="left")
-    SSN3_input = Entry(demographic.SSN_container, width=4, textvariable= SSN3)
-    SSN3_input.pack(side="left")
-
-    #Address label and text entry boxes
-    address = Label(demographic.address_container, text = "Address")
-    address.grid(column = 0, row = 0, padx = 10) 
-
-    street_address1 = Entry(demographic.address_container, width= 40, textvariable= Address1)
-    street_address1.grid(column = 1, row = 0)
-
-    street_address2 = Entry(demographic.address_container, width=40, textvariable= Address2)
-    street_address2.grid(column = 1, row = 1)
-
-    zip_code = Label(demographic.zip_container, text = "ZIP Code: ")
-    zip_code.grid(column = 0, row = 2, padx = 10)
-
-    zip_code_input = Entry(demographic.zip_container, width = 10, textvariable= ZIP)
-    zip_code_input.grid(column = 1, row = 2)
-
-    #state = Entry(demographic.address_container, width = 10, textvariable= "State")
-    
-
-    email = Label(demographic.email_container, text = "Email: ")
-    email.grid(column = 0, row = 0, padx = 10)
-
-    email_input = Entry(demographic.email_container, width = 40, textvariable= Email)
-    email_input.grid(column = 1, row = 0)
-
-
-
-    save = Button(demographic.main_container, width=5, text="Save", command=lambda: retrieve_input())
-    save.pack(side="bottom")
-
-    mainloop()
-
 #Creating Profile menu
 main_window = Tk()
 main_window.title("Main")
 menu = Menu(main_window)
-new_item = Menu(menu, tearoff=0)
+new_item = Menu(menu)
 new_item.add_command(label='Patient Search')
 new_item.add_separator()
 new_item.add_command(label='Edit Profile')
 new_item.add_separator()
-new_item.add_command(label='Create New Profile', command= demographic_entry)
+new_item.add_command(label='Create New Profile')
 menu.add_cascade(label='Profile', menu=new_item)
 main_window.config(menu=menu)
 main_window.mainloop()
+
+
+#Demographic Info Window    
+demographic = Tk()
+demographic.title("Demographic Information")
+demographic.geometry("600x400+100+100")
+
+demographic.main_container = Frame(demographic)
+demographic.main_container.grid(column = 0, columnspan = 2, row = 0, rowspan = 2)
+
+demographic.name_container = Frame(demographic.main_container)
+demographic.name_container.pack(side = 'top')
+
+demographic.sex_container = Frame(demographic.main_container)
+demographic.sex_container.pack()
+
+demographic.DOB_container = Frame(demographic.main_container)
+demographic.DOB_container.pack()
+
+demographic.SSN_container = Frame(demographic.main_container)
+demographic.SSN_container.pack()
+
+demographic.address_container = Frame(demographic.main_container)
+demographic.address_container.pack()
+
+demographic.zip_container = Frame(demographic.main_container)
+demographic.zip_container.pack()
+
+demographic.email_container =Frame(demographic.main_container)
+demographic.email_container.pack()
+
+
+First = StringVar()
+First.trace('w', limitSize)
+Middle_I = StringVar()
+Middle_I.trace('w', limitSize)
+Last = StringVar()
+Last.trace('w', limitSize)
+sex_choice = StringVar()
+DOBmonth = StringVar()
+DOBmonth.trace('w', limitSize)
+DOBday = StringVar()
+DOBday.trace('w', limitSize)
+DOByear = StringVar()
+DOByear.trace('w', limitSize)
+SSN1 = StringVar()
+SSN1.trace('w', limitSize)
+SSN2 = StringVar()
+SSN2.trace('w', limitSize)
+SSN3 = StringVar()
+SSN3.trace('w', limitSize)
+Address1 = StringVar()
+Address1.trace('w', limitSize)
+Address2 = StringVar()
+Address2.trace('w', limitSize)
+ZIP = StringVar()
+ZIP.trace('w', limitSize)
+Email = StringVar()
+Email.trace('w', limitSize)
+
+
+#First name label and text entry box
+firstname = Label(demographic.name_container, text = "First Name: ")
+firstname.grid(column = 0, row = 0, padx=10)
+firstname_input = Entry(demographic.name_container, width = 20, textvariable= First)
+firstname_input.grid(column = 1, row = 0)
+
+# Middle Initial Label and text entry box
+middle_I = Label(demographic.name_container, text = "\tMiddle Inital: ")
+middle_I.grid(column = 2, row = 0, padx=10)
+middle_I_input = Entry(demographic.name_container, width = 5, textvariable = Middle_I)
+middle_I_input.grid(column = 3, row = 0)
+
+#Last name label and text entry box
+lastname = Label(demographic.name_container, text = "\tLast Name: ")
+lastname.grid(column = 4, row = 0, padx = 10)
+lastname_input = Entry(demographic.name_container, width = 30, textvariable= Last)
+lastname_input.grid(column = 5, row = 0)
+
+#DOB label and text entry boxes
+DOB = Label(demographic.DOB_container, text = "Birthdate: ").pack(side = LEFT)
+DOBmonth_input = Entry(demographic.DOB_container, width=2, textvariable= DOBmonth)
+DOBmonth_input.pack(side = LEFT)
+DOBday_input = Entry(demographic.DOB_container, width = 2, textvariable= DOBday)
+DOBday_input.pack(side = LEFT)
+DOByear_input = Entry(demographic.DOB_container, width = 4, textvariable= DOByear)
+DOByear_input.pack(side = LEFT)
+
+#Sex label and Radiobutton entry boxes
+sex_label = Label(demographic.sex_container, text = "Sex: ").pack(side = LEFT)
+sex_input1 = Radiobutton(demographic.sex_container,text='Female', width = 5, value= Female, variable = sex_choice)
+sex_input1.pack(side = LEFT)
+sex_input2 = Radiobutton(demographic.sex_container,text='Male', width = 5, value= Male, variable = sex_choice)
+sex_input2.pack(side = LEFT)
+
+
+#SSN label and text entry boxes
+SSN = Label(demographic.SSN_container, text = "Social Security Number: ").pack(side = LEFT)
+SSN1_input = Entry(demographic.SSN_container, width=3, textvariable= SSN1)
+SSN1_input.pack(side="left")
+
+SSN2_input = Entry(demographic.SSN_container, width=2, textvariable= SSN2)
+SSN2_input.pack(side="left")
+SSN3_input = Entry(demographic.SSN_container, width=4, textvariable= SSN3)
+SSN3_input.pack(side="left")
+
+#Address label and text entry boxes
+address = Label(demographic.address_container, text = "Address")
+address.grid(column = 0, row = 0, padx = 10) 
+
+street_address1 = Entry(demographic.address_container, width= 40, textvariable= Address1)
+street_address1.grid(column = 1, row = 0)
+
+street_address2 = Entry(demographic.address_container, width=40, textvariable= Address2)
+street_address2.grid(column = 1, row = 1)
+
+zip_code = Label(demographic.zip_container, text = "ZIP Code: ")
+zip_code.grid(column = 0, row = 2, padx = 10)
+
+zip_code_input = Entry(demographic.zip_container, width = 10, textvariable= ZIP)
+zip_code_input.grid(column = 1, row = 2)
+
+#state = Entry(demographic.address_container, width = 10, textvariable= "State")
+
+
+email = Label(demographic.email_container, text = "Email: ")
+email.grid(column = 0, row = 0, padx = 10)
+
+email_input = Entry(demographic.email_container, width = 40, textvariable= Email)
+email_input.grid(column = 1, row = 0)
+
+
+
+save = Button(demographic.main_container, width=5, text="Save", command=lambda: retrieve_input())
+save.pack(side="bottom")
+
+mainloop()
