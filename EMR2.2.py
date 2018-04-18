@@ -269,7 +269,7 @@ Email = StringVar()
 Email.trace('w', limitSize)
 
 City = Stringvar()
-City.tract('w', limitSize)
+City.trace('w', limitSize)
 
 
 save = Button(demographic.main_container, width=5, text="Save", command=lambda: retrieve_input())
