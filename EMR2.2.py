@@ -68,7 +68,7 @@ def retrieve_input(*args):
     SSN = SSN1+SSN2+SSN3
     Address = Address1+Address2
     #State = State_input.get()
-    #City = City_input.get()
+    City = City_input.get()
     
     patient_info = [First, Middle_I, Last, Sex, DOBmonth, DOBday, DOByear, SSN, Address, City, State, ZIP, Email]
     print(patient_info)
@@ -144,8 +144,8 @@ demographic.zip_container.pack()
 demographic.email_container =Frame(demographic.main_container)
 demographic.email_container.pack()
 
-demographic.state_container = Frame(demographic.main_container)
-demographic.state_container.pack()
+demographic.city_container = Frame(demographic.main_container)
+demographic.city_container.pack()
 
 
 ############################################################################
@@ -205,13 +205,19 @@ street_address1.grid(column = 1, row = 0)
 
 street_address2 = Entry(demographic.address_container, width=40, textvariable= Address2)
 street_address2.grid(column = 1, row = 1)
-
+#####
 zip_code = Label(demographic.zip_container, text = "ZIP Code: ")
 zip_code.grid(column = 0, row = 2, padx = 10)
 
 zip_code_input = Entry(demographic.zip_container, width = 10, textvariable= ZIP)
 zip_code_input.grid(column = 1, row = 2)
 
+city = Label(demographic.City_container, text = "City: ")
+city.grid(column=0, row = 0, padx = 10)
+city_input = Entry(demographic.City_container, width = 10, textvariable = City)
+city_input.grid(column =1, row = 0)
+
+# Email label and text entry boxes
 
 email = Label(demographic.email_container, text = "Email: ")
 email.grid(column = 0, row = 0, padx = 10)
