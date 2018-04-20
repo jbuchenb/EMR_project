@@ -1,0 +1,78 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Apr 18 23:29:36 2018
+
+@author: dan
+"""
+from tkinter import *
+import tkinter as tk
+root = tk.Tk()
+
+##### Defining variables that correlate to user inputs
+first_inslist = tk.StringVar()
+middle_i_inslist = tk.StringVar()
+last_inslist = tk.StringVar()
+SSN_inslist = tk.IntVar()
+
+
+inslist = (first_inslist, middle_i_inslist, last_inslist, SSN_inslist)
+######################################################################
+#functions
+def only_num (input):
+    if input.isdigit():
+        return True
+    elif input is '':
+        return True
+    else:
+        return False
+    
+
+#####################################################################
+#creates title for Frame and gives it dimensions
+insurance_info = Tk()
+insurance_info.title("Insurance Information")
+insurance_info.geometry("600x300")
+
+# Creates a main container with the insurance_info Frame 
+# Establish location of container in frame, and how many columns/ rows the container has
+insurance_info.ins_cont = Frame(insurance_info)
+insurance_info.ins_cont.grid(column = 0, columnspan=6, row=0, rowspan= 6)
+
+#### creates name. Used to communicate what should go in the corresponding textbox
+firstname =Label(insurance_info.ins_cont, text = "First Name: ")
+firstname.grid(column = 0, row = 0, padx =5)
+#### creates text box and variable name for information that user types
+input_FIRST_NAME = tk.Entry(insurance_info.ins_cont, width = 20, textvariable = first_inslist)
+input_FIRST_NAME.grid(column= 1, row = 0)
+################################################################################
+
+lastname =Label(insurance_info.ins_cont, text = "Middle Int: ")
+lastname.grid(column = 3, row = 0, padx =5)
+
+input_LAST_NAME =tk.Entry(insurance_info.ins_cont, width = 4, textvariable = middle_i_inslist)
+input_LAST_NAME.grid(column= 4, row = 0)
+##############################################################################
+lastname =Label(insurance_info.ins_cont, text = "Last Name: ")
+lastname.grid(column = 5, row = 0, padx =5)
+
+input_LAST_NAME =tk.Entry(insurance_info.ins_cont, width = 30, textvariable = last_inslist)
+input_LAST_NAME.grid(column= 6, row = 0)
+###############################################################################
+
+SSN = Label(insurance_info.ins_cont, text = "Social Security Number")
+SSN.grid (column =0, row = 1, padx= 5, pady = 5)
+
+e=tk.Entry(insurance_info.ins_cont)
+e.grid(column =1, row = 1)
+reg= insurance_info.ins_cont.register(only_num)
+e.config(validate= "key", validatecommand=(reg,'%P'))
+
+
+
+
+
+
+
+
+
+mainloop()
