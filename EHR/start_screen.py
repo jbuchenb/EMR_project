@@ -425,7 +425,11 @@ def search_SSN():
 	global SSN_usr, searched_patient_SSN
 	searched_patient_SSN = SSN_usr.get()
 
-	if check_SSN_dont_exist_database(searched_patient_SSN):
+	if not SSN.isdigit():
+		messagebox.showinfo("Error", "The introduced SSN must contain only digits.")
+		return
+
+	elif check_SSN_dont_exist_database(searched_patient_SSN):
 		messagebox.showinfo("Error", "The introduced SSN doesn't exist in the database. Please first create the patient.")
 		return
 	else:
