@@ -1,0 +1,130 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Apr 21 10:28:29 2018
+
+@author: dan
+"""
+
+
+#%%
+import re
+def number_filter(number_string):
+    ''' transformational function for number strings. 
+    -Takes a numerical string such as a phone number or SSN and removes 
+    potential characters such as '-' or '()'.
+    -Transformed string is then evaluated for whether or not it is a number.
+    
+    ex. number_filter('(919)-455-7795')
+        result -> 9194557795
+    ex. number_filter("334-7o-ertt")
+        result -> invalid response. Numbers and symbols such as . ( ) or - should be used
+    '''
+    number_string = re.sub("\(|\)|\-|\.",'', number_string)
+    
+    cleaned_string = number_string
+   
+    if cleaned_string.isnumeric():
+        print(cleaned_string)
+    else:
+        print("invalid response. Numbers and symbols such as . ( ) or - should be used")
+
+    
+#%%
+number_filter('(919)-455-7793')           
+
+ 
+
+#%%
+def name_case(name_string):
+    '''Changes the first letter of a string to a capital
+    
+    ex. name_case('daniel')
+    --> Daniel    
+    ex. name_case('DANiel BUCHenBERger')
+    --> Daniel Buchenberger
+    '''
+    
+    name = name_string.lower()
+    new_name = name.title()
+    print(new_name)
+
+#%% 
+name_case('DANiel BUCHenBERger')
+        
+#%%
+
+
+def is_phone_number(number_string):
+    '''cleans text string and checks if length is 7 or 10 units long
+    
+    ex. is_phone_number('4557796')
+    --> True
+    ex. is_phone_number('704.455.7796')
+    --> True
+    ex. is_phone_number('!850.554*77)
+    --> invalid response. Numbers and symbols such as . ( ) or - should be used
+    ex. is_phone_number('(704)45-577')
+    --> please check the phone number
+    '''
+    number_string = re.sub("\(|\)|\-|\.",'', number_string)
+    
+    cleaned_string = number_string
+   
+    if cleaned_string.isnumeric():
+        print(cleaned_string)
+    else:
+        return("invalid response. Numbers and symbols such as . ( ) or - should be used")
+    
+    if len(cleaned_string) == 10:
+        True
+    elif len(cleaned_string) == 7:
+        True
+    else:
+        return("please check the phone number")
+        
+
+#%%
+
+def is_SSN(number_string):
+    '''cleans text string and checks if length is 7 or 10 units long
+    
+    ex. phone_number('4557796')
+    --> True
+    ex. phone_number('704.455.7796')
+    --> True
+    ex. phone_number('!850.554*77)
+    --> invalid response. Numbers and symbols such as . ( ) or - should be used
+    ex. phone_number('(704)45-577')
+    --> Please check your Social Security Number for accuracy
+    '''
+    number_string = re.sub("\(|\)|\-|\.",'', number_string)
+    
+    cleaned_string = number_string
+   
+    if cleaned_string.isnumeric():
+        print(cleaned_string)
+    else:
+        return("invalid response. Numbers and symbols such as . ( ) or - should be used")
+    
+    if len(cleaned_string) == 9:
+        True
+    else:
+        return("Please check your Social Security Number for accuracy")
+        
+#%%
+        
+def clean_text_box(string):
+    '''
+    Removes External and Interal spaces
+    ex. clean_text_box("     Hi   Boo!!!!          ")
+    --> Hiboo!!!!
+    
+    
+    '''
+    new= string.strip()
+    new =string.replace(" ", '')
+    return new
+
+
+#%%
+clean_text_box("     Hi   Boo!!!!          ")
