@@ -425,7 +425,7 @@ def search_SSN():
 	global SSN_usr, searched_patient_SSN
 	searched_patient_SSN = SSN_usr.get()
 
-	if not SSN.isdigit():
+	if not searched_patient_SSN.isdigit():
 		messagebox.showinfo("Error", "The introduced SSN must contain only digits.")
 		return
 
