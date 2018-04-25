@@ -33,7 +33,7 @@ SSN_usr = 0
 DOB_usr = 0
 city_usr = 0
 
-# This variable only sotre integers
+# This variable only stores integers
 searched_patient_SSN = 0
 
 
@@ -52,7 +52,7 @@ def create_start_screen():
 	start_screen.geometry("600x200")
 
 
-	txt_1 = Label(start_screen, text="Please click on one of the following option", fg=font_color, 
+	txt_1 = Label(start_screen, text="Please choose one of the following options:", fg=font_color, 
 						font=("Helvetica", 20),
 						bg=back_color).grid(row=1, column=0)
 
@@ -139,7 +139,7 @@ def create_new_patient_screen():
 	city_usr = StringVar()
 
 
-	txt_1 = Label(new_patient_screen, text="Please input patients information", fg=font_color, 
+	txt_1 = Label(new_patient_screen, text="Please input patient's information", fg=font_color, 
 						font=("Helvetica", 20),
 						bg=back_color).grid(row=1, column=0)
 
@@ -148,14 +148,14 @@ def create_new_patient_screen():
 						font=("Helvetica", 26),
 						bg=back_color).grid(row=2, column=0)
 
-	txt_firstName = Label(new_patient_screen, text="Firs name:", bg=back_color, fg=font_color).grid(row=3, column=0)
+	txt_firstName = Label(new_patient_screen, text="First name:", bg=back_color, fg=font_color).grid(row=3, column=0)
 	input_firstName = Entry(new_patient_screen, textvariable=firstName_usr, highlightbackground=back_color).grid(row=3, column=1) 
 
 	txt_lastName = Label(new_patient_screen, text="Last name:", bg=back_color, fg=font_color).grid(row=4, column=0)
 	input_lastName = Entry(new_patient_screen, textvariable=lastName_usr, highlightbackground=back_color).grid(row=4, column=1) 
 
-	txt_SNN = Label(new_patient_screen, text="SNN:", bg=back_color, fg=font_color).grid(row=5, column=0)
-	input_SNN = Entry(new_patient_screen, textvariable=SSN_usr, highlightbackground=back_color).grid(row=5, column=1) 
+	txt_SSN = Label(new_patient_screen, text="SSN:", bg=back_color, fg=font_color).grid(row=5, column=0)
+	input_SSN = Entry(new_patient_screen, textvariable=SSN_usr, highlightbackground=back_color).grid(row=5, column=1) 
 
 	txt_DOB = Label(new_patient_screen, text="Date of birth (2012-5-21):", bg=back_color, fg=font_color).grid(row=6, column=0)
 	input_DOB = Entry(new_patient_screen, textvariable=DOB_usr, highlightbackground=back_color).grid(row=6, column=1) 
@@ -173,7 +173,7 @@ def create_new_patient_screen():
 	button_print = Button(new_patient_screen, fg=font_color, text="Create patient", command=create_new_patient, width=12, height=2).grid(row=9, column=0)
 	button_print = Button(new_patient_screen, fg=font_color, text="Cancel", command=closeNewPatient_open_start, width=12, height=2).grid(row=9, column=1)
 
-	# Export to globa enviroment
+	# Export to global enviroment
 	# global firstName_usr, lastName_usr, SSN_usr, DOB_usr, city_usr
 
 	new_patient_screen.mainloop()
@@ -192,7 +192,7 @@ def create_searchPatient_screen():
 
 	SSN_usr = StringVar()
 
-	txt_1 = Label(search_patient_screen, text="Please input patients SNN to search", fg=font_color, 
+	txt_1 = Label(search_patient_screen, text="Please input patient's SSN to search", fg=font_color, 
 						font=("Helvetica", 20),
 						bg=back_color).grid(row=1, column=0)
 
@@ -202,8 +202,8 @@ def create_searchPatient_screen():
 						bg=back_color).grid(row=2, column=0)
 
 
-	txt_SNN = Label(search_patient_screen, text="SNN:", bg=back_color, fg=font_color).grid(row=3, column=0)
-	input_SNN = Entry(search_patient_screen, textvariable=SSN_usr, highlightbackground=back_color).grid(row=3, column=1) 
+	txt_SSN = Label(search_patient_screen, text="SSN:", bg=back_color, fg=font_color).grid(row=3, column=0)
+	input_SSN = Entry(search_patient_screen, textvariable=SSN_usr, highlightbackground=back_color).grid(row=3, column=1) 
 
 	txt_2 = Label(search_patient_screen, text="", fg=font_color, 
 						font=("Helvetica", 26),
@@ -237,7 +237,7 @@ def create_patientHome_screen():
 
 
 	patient_home_screen = Tk()
-	patient_home_screen.title("Patient home scree")	
+	patient_home_screen.title("Patient home screen")	
 	patient_home_screen.geometry("600x300")
 
 	txt_1 = Label(patient_home_screen, text=patient_name_txt, fg=font_color, 
@@ -306,7 +306,7 @@ def create_edit_patient_info_screen():
 
 
 
-	txt_1 = Label(edit_patient_info_screen, text="Please update patients information", fg=font_color, 
+	txt_1 = Label(edit_patient_info_screen, text="Please update patient's information", fg=font_color, 
 						font=("Helvetica", 20),
 						bg=back_color).grid(row=1, column=0)
 
@@ -315,7 +315,7 @@ def create_edit_patient_info_screen():
 						font=("Helvetica", 26),
 						bg=back_color).grid(row=2, column=0)
 
-	txt_firstName = Label(edit_patient_info_screen, text="Firs name:", bg=back_color, fg=font_color).grid(row=3, column=0)
+	txt_firstName = Label(edit_patient_info_screen, text="First name:", bg=back_color, fg=font_color).grid(row=3, column=0)
 	input_firstName = Entry(edit_patient_info_screen, textvariable=firstName_usr, highlightbackground=back_color)
 	# Populate with infomration stored in the databe
 	input_firstName.insert(END, patient_firstName)
@@ -327,21 +327,21 @@ def create_edit_patient_info_screen():
 	input_lastName.insert(END, patient_lastName)
 	input_lastName.grid(row=4, column=1)  
 
-	txt_SNN = Label(edit_patient_info_screen, text="SNN:", bg=back_color, fg=font_color).grid(row=5, column=0)
-	input_SNN = Entry(edit_patient_info_screen, textvariable=SSN_usr, highlightbackground=back_color)
-	# Populate with infomration stored in the databe
-	input_SNN.insert(END, patient_SSN)
-	input_SNN.grid(row=5, column=1)   
+	txt_SSN = Label(edit_patient_info_screen, text="SSN:", bg=back_color, fg=font_color).grid(row=5, column=0)
+	input_SSN = Entry(edit_patient_info_screen, textvariable=SSN_usr, highlightbackground=back_color)
+	# Populate with information stored in the databe
+	input_SSN.insert(END, patient_SSN)
+	input_SSN.grid(row=5, column=1)   
 
 	txt_DOB = Label(edit_patient_info_screen, text="Date of birth (2012-5-21):", bg=back_color, fg=font_color).grid(row=6, column=0)
 	input_DOB = Entry(edit_patient_info_screen, textvariable=DOB_usr, highlightbackground=back_color)
-	# Populate with infomration stored in the databe
+	# Populate with information stored in the databe
 	input_DOB.insert(END, patient_dob)
 	input_DOB.grid(row=6, column=1)   
 
 	txt_city = Label(edit_patient_info_screen, text="City:", bg=back_color, fg=font_color).grid(row=7, column=0)
 	input_city = Entry(edit_patient_info_screen, textvariable=city_usr, highlightbackground=back_color)
-	# Populate with infomration stored in the databe
+	# Populate with information stored in the databe
 	input_city.insert(END, patient_city)
 	input_city.grid(row=7, column=1)   
 
@@ -430,7 +430,7 @@ def search_SSN():
 		return
 
 	elif check_SSN_dont_exist_database(searched_patient_SSN):
-		messagebox.showinfo("Error", "The introduced SSN doesn't exist in the database. Please first create the patient.")
+		messagebox.showinfo("Error", "The introduced SSN doesn't exist in the database. Please create a new patient.")
 		return
 	else:
 		search_patient_screen.destroy()
@@ -538,21 +538,21 @@ def invalid_PatientInfo(patient_info_ls):
 		return True
 
 	elif len(SSN) != 9:
-		messagebox.showinfo("Error", "The introduced SSN must contains 9 digits.")
+		messagebox.showinfo("Error", "The introduced SSN must contain 9 digits.")
 		return True
 
 	# Check dob is valid date and format
 	elif invalid_date(DOB):
-		messagebox.showinfo("Error", "The introduced Date of birth must be in the format YYYY-MM-DD.")
+		messagebox.showinfo("Error", "The introduced date of birth must be in the format YYYY-MM-DD.")
 		return True
 	# Check dob is not a future date
 	elif datetime.now() < datetime.strptime(DOB, "%Y-%m-%d"):
-		messagebox.showinfo("Error", "The introduced Date of birth is a future date.")
+		messagebox.showinfo("Error", "The introduced date of birth is a future date.")
 		return True
 
 	# Cannot be grater than 140)
 	elif current_age(DOB) > 140:
-		messagebox.showinfo("Error", "The introduced Date of birth returns a calculated age over 140 years.\nPlease correct the date.")
+		messagebox.showinfo("Error", "The introduced date of birth returns a calculated age over 140 years.\nPlease correct the date.")
 		return True
 	return False
 	
