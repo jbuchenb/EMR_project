@@ -14,6 +14,8 @@ drugs = pd.read_excel("drugs_db.xlsx")
 
 
 def check_SSN_dont_exist_database(SSN):
+	global df
+	print(df)
 	SSN = int(SSN)
 	if SSN in df["SSN"].values.tolist():
 		return False
@@ -21,7 +23,7 @@ def check_SSN_dont_exist_database(SSN):
 		return True
 
 
-
+# print(check_SSN_dont_exist_database(123412341))
 
 def add_patient(ls_patient_info):
 	global df
@@ -43,9 +45,9 @@ def add_patient(ls_patient_info):
 	else:
 		df = df.append(temp, ignore_index = True)
 		#print(df)
-		df.to_excel("database.xlsx")
+		df.to_excel("patient_db.xlsx")
 		# It is not requiered to read agian the file just written
-		# df = pd.read_excel("database.xlsx")
+		df = pd.read_excel("patient_db.xlsx")
 		# frames = [df, temp]
 		# result = pd.concat(frames, axis = 0)
 	return
@@ -80,8 +82,8 @@ def update_info_db(ls_patient_info, SSN):
 
 	df.loc[df.loc[:, "SSN"] == SSN, :] = temp_array
 
-	df.to_excel("database.xlsx")
-	df = pd.read_excel("database.xlsx")
+	df.to_excel("patient_db.xlsx")
+	# df = pd.read_excel("patient_db.xlsx")
 	return
 
 # buiild the other tables using the index in df as patient id
