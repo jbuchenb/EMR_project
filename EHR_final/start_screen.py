@@ -180,7 +180,7 @@ def create_new_patient_screen():
 						font=("Helvetica", 26),
 						bg=back_color).grid(row=2, column=0)
 
-	txt_firstName = Label(new_patient_screen, text="Firs name:", bg=back_color, fg=font_color).grid(row=3, column=0)
+	txt_firstName = Label(new_patient_screen, text="First name:", bg=back_color, fg=font_color).grid(row=3, column=0)
 	input_firstName = Entry(new_patient_screen, textvariable=firstName_usr, highlightbackground=back_color).grid(row=3, column=1) 
 
 	txt_lastName = Label(new_patient_screen, text="Last name:", bg=back_color, fg=font_color).grid(row=4, column=0)
@@ -353,7 +353,7 @@ def create_edit_patient_info_screen():
 						font=("Helvetica", 26),
 						bg=back_color).grid(row=2, column=0)
 
-	txt_firstName = Label(edit_patient_info_screen, text="Firs name:", bg=back_color, fg=font_color).grid(row=3, column=0)
+	txt_firstName = Label(edit_patient_info_screen, text="First name:", bg=back_color, fg=font_color).grid(row=3, column=0)
 	input_firstName = Entry(edit_patient_info_screen, textvariable=firstName_usr, highlightbackground=back_color)
 	# Populate with infomration stored in the databe
 	input_firstName.insert(END, patient_firstName)
