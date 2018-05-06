@@ -653,8 +653,11 @@ def create_viewVitals_screen():
 		vital[1] = str(vital[1])
 		vital[2] = str(vital[2])
 
-		# Conver datetime to str in american format
-		vital[3] = vital[3].strftime("%m-%d-%Y")
+		# Conver datetime to str in american format only if it is a datetime
+		if vital[3] != '': 
+			vital[3] = vital[3].strftime("%m-%d-%Y %H:%M:%S")
+		else:
+			vital[3] == ''
 		
 		# drug = Label(view_vitals_screen, text=prescription[0].strip(), fg=font_color, 
 		# 				font=("Helvetica", 12),
@@ -734,7 +737,7 @@ def create_msg_newVitals_created_screen(dict_vitals):
 	"Heart rate: " + str(dict_vitals["heart rate"]) + "\n" +
 	"Sistolic BP: " + str(dict_vitals["sbp"]) + "\n" +
 	"Diastolic BP: " + str(dict_vitals["dbp"]) + "\n" +
-	"Date: " + str(dict_vitals["date"].strftime("%m-%d-%Y")) + "\n" +
+	"Date: " + str(dict_vitals["date"].strftime("%m-%d-%Y %H:%M:%S")) + "\n" +
 	 "\n\nDo you want to add another vitals?")
 	Label(msg_newVitals_screen, text=message, fg=font_color, 
 						font=("Helvetica", 14),

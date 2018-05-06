@@ -128,7 +128,7 @@ def obtain_patient_id(SSN):
 	patient_row = df.loc[:, "SSN"] == SSN
 	return df.loc[patient_row, :].index.tolist()[0]
 
-
+# print(pd.DataFrame())
 def obtain_vitals(SSN):
 	'''
 	It returns the last five vitals added to the db, as a list of lists.
@@ -140,6 +140,11 @@ def obtain_vitals(SSN):
 	patient_id = obtain_patient_id(SSN)
 	patient_rows = vitals.loc[:, "patient_id"] == patient_id
 	temp = vitals.loc[patient_rows, :]
+	# Check if patients is empty 
+	if temp.empty :
+		return[['', '', '', ''],
+				["heart rate", "sbp", "dbp", "date"]]
+	
 	# Pivot the obtained df
 	temp = temp.drop("patient_id", axis=1)
 	temp = temp.pivot(index="date", columns="vital_type", values="value")
